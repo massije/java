@@ -71,6 +71,25 @@ class IncDec {
       c = z--;
       System.out.println("z's value: " + z);
       System.out.println("c's value: " + c);
+      
+      byte b = 5;
+      
+      b = b + 1; // esto es lo mismo que poner b++, pero a la vez no.
+      // esto en terminos matemáticos es lo mismo que b++ ya que de ambas
+      // formas se esta añadiendo un 1 a la variable.
+      // pero porque hay un error? pues si bien recordamos, cuando hacemos 
+      // operaciones con variables de byte + int o shot + byte, etc 
+      // el resultado sera siempre de tipo int. ya que ese es el tipo
+      // de dato por defecto para las operaciones enteras.
+      // entonces lo que sucede aquí es que si que se suman b + 1 y nos da 6
+      // pero ya no es de tipo byte, sino de tipo int y por ese motivo
+      // nos da error, ya que un dato de tipo int no puede ser almacenado en un 
+      // dato de tipo byte porque el tamaño del int es muy grande para ser 
+      // almacenado en un byte.
+      
+      // sin embargo al hacer b++, esta operacion se realiza sobre la propia variable.
+      // es decir no hay ninguna varible involucrada.
+      System.out.println(b);
    
    }
 
