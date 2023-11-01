@@ -1,88 +1,56 @@
 import java.lang.*;
 import java.util.Scanner;
 
+/******************************************************************************************************************
+ * 
+ * Nombre: Jorge Martin Del Pino Contreras 
+ * Fecha: 15/10/2023 
+ * Modulo: Programación. 
+ * UD1. 
+ * Tarea: PROG01 - Tarea evaluativa 02: Programa que crea una figura simétrica 
+ * Autoevaluación: https://docs.google.com/document/d/1KPFIshehQb2mBDWfngPgqkrnEbVzVSoQQSrSzSTrtfA/edit?usp=sharing
+ *                 https://www.youtube.com/watch?v=iPZrICQ5XcE
+ * Descripción del programa: El programa imprime por consola una figura simétrica que tiene forma de torre.
+ *                           Y esta torre a su vez esta compuesta por otras figuras o simbolos independientes 
+ *                           que de forma conjunta forman la torre.
+ *
+ *******************************************************************************************************************/
+ 
+// Creamos la clase. El nombre debe coincidir con el del fichero .java
 class Tests {
+  // Creamos método main. Siempre debe existir y siempre se define igual.
 
-   static final String TUBO = "||";
-   static final char ESPACIO = ' ';
-   static final String ladoIzquierdo = "_/";
-   static final String ladoDerecho = "\\_";
-   
+  
    public static void main(String[] args) {
-      dibujarTorre();
+      cuadrado("jorge martin");
    }
    
-   public static void dibujarTorre() {
-      dibujarCuatroLineasVerticales();
-      dibujarPiramide();
-      dibujarPiramideInvertida();
-      dibujarDoceLineasVerticales();
-      dibujarPiramide();
+   public static void cuadrado(String palabra) {
+      int tamanioPalabra = palabra.length();
+      dibujarGuiones(tamanioPalabra);
+      for (int fila = 1; fila <= tamanioPalabra; fila++) {
+         revertirPalabra(palabra);
+         System.out.println();
+      }
+      dibujarGuiones(tamanioPalabra);
+   }
+
+   public static void dibujarGuiones(int tamanio) {
+      int newTamanio = tamanio * 2 + 2;
+      for (int column = 1; column <= newTamanio; column++) {
+         System.out.print("-");
+      }
+      System.out.println();
    }
    
-   public static void dibujarDoceEspacios() {
-      for (int espacio = 1; espacio <= 12; espacio++) {
-         System.out.print(ESPACIO);
+   public static void revertirPalabra(String palabra) {
+     char letra;
+     int tamanio = palabra.length() - 1;
+     System.out.print("|");
+      for (int column = 0; column <= tamanio; column++) {
+         letra = palabra.charAt(tamanio - column);
+         System.out.print(letra + " ");
       }
-   }
-   
-   public static void dibujarCuatroLineasVerticales() {
-      for (int linea = 1; linea <= 4; linea++){
-         dibujarDoceEspacios();
-         System.out.println(TUBO);
-      }
-   }
-   
-   public static void dibujarDoceLineasVerticales() {
-      for (int grupo = 1; grupo <= 3; grupo++) {
-         dibujarCuatroLineasVerticales();
-      }
-   }
-   
-   public static void dibujarPiramideInvertida() {
-      String uveInvertida = "/\\";
-      for (int linea = 1; linea <= 4; linea++) {
-         for (int space = 1; space <= (2 * linea - 2); space++) {
-            System.out.print(ESPACIO);
-         }
-         //Figura \_
-         System.out.print(ladoDerecho);
-         // Figura /\
-         for (int vInvertida = 1; vInvertida <= (11 - (2 * linea - 2)); vInvertida++) {
-            System.out.print(uveInvertida);
-         }
-         System.out.println(ladoIzquierdo);
-      }
-   }
-   
-   public static void dibujarPiramide() {
-      char rayaVertical = '|';
-      char dosPuntos = ':';
-      char barraBaja = '_';
-      char comillaDoble = '\"';
-      for (int linea = 1; linea <= 4; linea++) { 
-         // figura __/
-         for (int space = 1; space <= (12 - 3 * linea); space++) {
-            System.out.print(ESPACIO);
-         }
-         System.out.print(barraBaja + ladoIzquierdo);
-         // figura de 2 puntos :
-         for (int colon = 1; colon <= (3 * linea - 3); colon++) {
-            System.out.print(dosPuntos);
-         }
-         System.out.print(TUBO);
-         // figura de 2 puntos :
-         for (int colon = 1; colon <= (3 * linea - 3); colon++) {
-            System.out.print(dosPuntos);
-         }
-         // figura \__
-         System.out.println(ladoDerecho + barraBaja);
-      }
-      // figura |""""""""""""""""""""""""|
-      System.out.print(rayaVertical);
-      for (int comillas = 1; comillas <= 24; comillas++) {
-         System.out.print(comillaDoble);
-      }
-      System.out.println(rayaVertical);
+      System.out.print("|");
    }
 }
