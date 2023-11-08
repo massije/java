@@ -22,35 +22,30 @@ class Tests {
 
   
    public static void main(String[] args) {
-      cuadrado("jorge martin");
-   }
    
-   public static void cuadrado(String palabra) {
-      int tamanioPalabra = palabra.length();
-      dibujarGuiones(tamanioPalabra);
-      for (int fila = 1; fila <= tamanioPalabra; fila++) {
-         revertirPalabra(palabra);
-         System.out.println();
+      int numero = 5;
+      
+      int resultado = tablaMultiplicar(numero);
+      
+      System.out.println("el resultado es : " + resultado);
+      
+      int nuevoResultado = resultado + 10;
+      
+      System.out.println("el resultado es : " + nuevoResultado);
+      
+   
+   }   
+   
+   public static int tablaMultiplicar(int numeroRecibido) {
+      int total = 0;
+      for (int i = 1; i <= 10; i++) {
+         int resultado = numeroRecibido * i;
+         System.out.println(numeroRecibido + " x " + i + " = " + resultado);
+         total += resultado;
       }
-      dibujarGuiones(tamanioPalabra);
+      return total;
    }
 
-   public static void dibujarGuiones(int tamanio) {
-      int newTamanio = tamanio * 2 + 2;
-      for (int column = 1; column <= newTamanio; column++) {
-         System.out.print("-");
-      }
-      System.out.println();
-   }
-   
-   public static void revertirPalabra(String palabra) {
-     char letra;
-     int tamanio = palabra.length() - 1;
-     System.out.print("|");
-      for (int column = 0; column <= tamanio; column++) {
-         letra = palabra.charAt(tamanio - column);
-         System.out.print(letra + " ");
-      }
-      System.out.print("|");
-   }
+                        
+
 }
